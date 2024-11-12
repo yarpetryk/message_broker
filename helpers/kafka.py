@@ -10,8 +10,8 @@ class Kafka:
         self.topic = topic
         self.kafka_data = []
         self.init_time = time.time()
-        self.kafka_bootstrap_server = 'localhost:9092'
-        self.kafka_group_id = 'my_app'
+        self.kafka_bootstrap_server = 'kafka:29092'
+        self.kafka_group_id = 'console-consumer-63295'
         self.kafka_offset_reset = 'earliest'
         self.__start_kafka_consumer(self.topic)
 
@@ -24,7 +24,9 @@ class Kafka:
         self.consumer.subscribe([topic])
         while True:
             msg = self.consumer.poll(timeout=1.0)
-            self.kafka_data.append(msg.value().decode('utf-8'))
+            print(msg)
+            # self.kafka_data.append(msg.value().decode('utf-8'))
+            self.kafka_data.append(msg)
             self.msg_time = time.time()
             time_delta = self.msg_time - self.init_time
             if time_delta > 10:
