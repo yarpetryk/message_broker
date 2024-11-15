@@ -10,7 +10,7 @@ class Kafka:
         self.topic = topic
         self.kafka_data = []
         self.init_time = time.time()
-        self.kafka_bootstrap_server = ['kafka:29092']
+        self.kafka_bootstrap_server = 'kafka:29092'
         self.kafka_group_id = 'console-consumer-63295'
         self.kafka_offset_reset = 'earliest'
         self.__start_kafka_consumer(self.topic)
